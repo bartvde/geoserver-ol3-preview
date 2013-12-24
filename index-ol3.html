@@ -7,6 +7,9 @@
             font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
             font-size: small;
         }
+        iframe {
+            width: 100%;
+        }
         #map {
             clear: both;
             position: relative;
@@ -19,15 +22,43 @@
         #location {
             float: right;
         }
+        /* Styles used by the default GetFeatureInfo output, added to make IE happy */
+        table.featureInfo, table.featureInfo td, table.featureInfo th {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            font-size: 90%;
+            padding: .2em .1em;
+        }
+        table.featureInfo th {
+            padding: .2em .2em;
+            font-weight: bold;
+            background: #eee;
+        }
+        table.featureInfo td {
+            background: #fff;
+        }
+        table.featureInfo tr.odd td {
+            background: #eee;
+        }
+        table.featureInfo caption {
+            text-align: left;
+            font-size: 100%;
+            font-weight: bold;
+            padding: .2em .2em;
+        }
     </style>
     <script src="ol-whitespace.js" type="text/javascript"></script>
     <title>OpenLayers map preview</title>
   </head>
   <body>
     <div id="map"></div>
-        <div id="wrapper">
-            <div id="location"/>
-        </div>
+    <div id="wrapper">
+        <div id="location"></div>
+    </div>
+    <div id="nodelist">
+        <em>Click on the map to get feature info</em>
     </div>
     <script type="text/javascript">
       var mousePositionControl = new ol.control.MousePosition({
@@ -55,6 +86,14 @@
           center: [0, 0],
           zoom: 1
         })
+      });
+      map.on('singleclick', function(evt) {
+        map.getFeatureInfo({
+          pixel: evt.getPixel(),
+          success: function(featureInfoByLayer) {
+            document.getElementById('nodelist').innerHTML = featureInfoByLayer.join('');
+          }
+        });
       });
     </script>
   </body>
