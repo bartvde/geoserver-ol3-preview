@@ -88,6 +88,7 @@
         })
       });
       map.on('singleclick', function(evt) {
+        document.getElementById('nodelist').innerHTML = "Loading... please wait...";
         map.getFeatureInfo({
           pixel: evt.getPixel(),
           success: function(featureInfoByLayer) {
