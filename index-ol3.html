@@ -9,6 +9,7 @@
         }
         iframe {
             width: 100%;
+            height: 250px;
         }
         #map {
             clear: both;
@@ -75,8 +76,9 @@
         layers: [
           new ol.layer.Image({
             source: new ol.source.ImageWMS({
+              getFeatureInfoOptions: {params: {'FEATURE_COUNT': 50}},
               ratio: 1,
-              url: 'http://suite.opengeo.org/geoserver/wms',
+              url: '/geoserver/wms',
               params: {'FORMAT': 'image/png', 'TRANSPARENT': true, 'LAYERS': 'opengeo:countries', 'VERSION': '1.1.1'}
             })
           })
