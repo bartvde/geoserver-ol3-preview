@@ -3,6 +3,10 @@
   <head>
     <link rel="stylesheet" href="http://ol3js.org/en/master/build/ol.css" type="text/css">
     <style>
+        body {
+            font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+            font-size: small;
+        }
         #map {
             clear: both;
             position: relative;
@@ -23,7 +27,6 @@
     <div id="map"></div>
         <div id="wrapper">
             <div id="location"/>
-            <div id="scale"/>
         </div>
     </div>
     <script type="text/javascript">
@@ -33,9 +36,9 @@
           coordinateFormat: ol.coordinate.createStringXY(5),
           undefinedHTML: '&nbsp;'
       });
-
+      var scaleLineControl = new ol.control.ScaleLine();
       var map = new ol.Map({
-        controls: ol.control.defaults().extend([mousePositionControl]),
+        controls: ol.control.defaults().extend([scaleLineControl, mousePositionControl]),
         target: 'map',
         renderer: ol.RendererHint.CANVAS,
         layers: [
