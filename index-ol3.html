@@ -259,7 +259,7 @@
       var map = new ol.Map({
         controls: ol.control.defaults().extend([scaleLineControl, mousePositionControl]),
         target: 'map',
-        renderer: ol.RendererHint.CANVAS,
+        renderer: ol.RendererHint.DOM,
         layers: [
           untiled,
           tiled
