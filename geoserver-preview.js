@@ -8,6 +8,26 @@ goog.require('ol.layer.Tile');
 goog.require('ol.source.TileWMS');
 goog.require('ol.coordinate');
 
+goog.exportSymbol(
+    'ol.proj.Units',
+    ol.proj.Units);
+goog.exportProperty(
+    ol.proj.Units,
+    'DEGREES',
+    ol.proj.Units.DEGREES);
+goog.exportProperty(
+    ol.proj.Units,
+    'FEET',
+    ol.proj.Units.FEET);
+goog.exportProperty(
+    ol.proj.Units,
+    'METERS',
+    ol.proj.Units.METERS);
+goog.exportProperty(
+    ol.proj.Units,
+    'PIXELS',
+    ol.proj.Units.PIXELS);
+
 goog.exportProperty(
     ol.source.TileWMS.prototype,
     'updateParams',
