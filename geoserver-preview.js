@@ -49,11 +49,6 @@ goog.exportProperty(
     ol.source.ImageWMS.prototype.getGetFeatureInfoUrl);
 
 goog.exportProperty(
-    ol.MapBrowserEvent.prototype,
-    'getCoordinate',
-    ol.MapBrowserEvent.prototype.getCoordinate);
-
-goog.exportProperty(
     ol.layer.Layer.prototype,
     'getSource',
     ol.layer.Layer.prototype.getSource);
