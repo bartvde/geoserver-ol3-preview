@@ -294,13 +294,14 @@
       map.getView().fitExtent(bounds, map.getSize());
       map.on('singleclick', function(evt) {
         document.getElementById('nodelist').innerHTML = "Loading... please wait...";
-        map.getFeatureInfo({
-          layers: [untiled],
-          pixel: evt.getPixel(),
-          success: function(featureInfoByLayer) {
-            document.getElementById('nodelist').innerHTML = featureInfoByLayer.join('');
-          }
-        });
+        var view = map.getView();
+        var viewResolution = view.getResolution();
+        var url = untiled.getSource().getGetFeatureInfoUrl(
+          evt.getCoordinate(), viewResolution, view.getProjection(),
+          {'INFO_FORMAT': 'text/html'});
+        if (url) {
+          document.getElementById('nodelist').innerHTML = '<iframe seamless src="' + url + '"></iframe>';
+        }
       });
 
       // sets the chosen WMS version
