@@ -125,7 +125,7 @@
             padding: .2em .2em;
         }
     </style>
-    <script src="http://ol3js.org/en/master/build/ol-whitespace.js" type="text/javascript"></script>
+    <script src="ol.js" type="text/javascript"></script>
     <title>OpenLayers map preview</title>
   </head>
   <body>
@@ -225,7 +225,7 @@
       // if this is just a coverage or a group of them, disable a few items,
       // and default to jpeg format
       var format = 'image/png';
-      var bounds = [10426.28200000152, 306846.19800000265, 278026.0899999961, 621876.3000000045]
+      var bounds = [-180, -90, 180, 90];
       if (pureCoverage) {
         document.getElementById('filterType').disabled = true;
         document.getElementById('filter').disabled = true;
@@ -245,23 +245,23 @@
       var untiled = new ol.layer.Image({
         source: new ol.source.ImageWMS({
           ratio: 1,
-          url: '/geoserver/wms',
-          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'opengeo:100_Provincies_NL', 'VERSION': '1.1.1'}
+          url: 'http://suite.opengeo.org/geoserver/wms',
+          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'usa:states', 'VERSION': '1.1.1'}
         })
       });
       var tiled = new ol.layer.Tile({
         visible: false,
         source: new ol.source.TileWMS({
-          url: '/geoserver/wms',
-          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'opengeo:100_Provincies_NL', 'VERSION': '1.1.1'}
+          url: 'http://suite.opengeo.org/geoserver/wms',
+          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'usa:states', 'VERSION': '1.1.1'}
         })
       });
       // A minimal projection object is configured with only the SRS code and the map
       // units. No client side coordinate transforms are possible with such a
       // projection object.
       var projection = new ol.proj.Projection({
-        code: 'EPSG:28992',
-        units: ol.proj.Units.METERS
+        code: 'EPSG:4326',
+        units: ol.proj.Units.DEGREES
       });
       var map = new ol.Map({
         controls: ol.control.defaults().extend([mousePositionControl]),
