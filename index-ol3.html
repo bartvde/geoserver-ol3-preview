@@ -244,7 +244,6 @@
       });
       var untiled = new ol.layer.Image({
         source: new ol.source.ImageWMS({
-          getFeatureInfoOptions: {params: {'FEATURE_COUNT': 50}},
           ratio: 1,
           url: '/geoserver/wms',
           params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'opengeo:100_Provincies_NL', 'VERSION': '1.1.1'}
@@ -298,7 +297,7 @@
         var viewResolution = view.getResolution();
         var url = untiled.getSource().getGetFeatureInfoUrl(
           evt.getCoordinate(), viewResolution, view.getProjection(),
-          {'INFO_FORMAT': 'text/html'});
+          {'INFO_FORMAT': 'text/html', 'FEATURE_COUNT': 50});
         if (url) {
           document.getElementById('nodelist').innerHTML = '<iframe seamless src="' + url + '"></iframe>';
         }
