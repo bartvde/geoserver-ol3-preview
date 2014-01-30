@@ -276,28 +276,27 @@
         })
       });
       map.getView().on('change:resolution', function(evt) {
-        if (ol.METERS_PER_UNIT) {
-          var resolution = evt.target.get('resolution');
-          var units = map.getView().get('projection').getUnits();
-          var dpi = 25.4 / 0.28;
-          var mpu = ol.METERS_PER_UNIT[units];
-          var scale = resolution * mpu * 39.37 * dpi;
-          if (scale >= 9500 && scale <= 950000) {
-            scale = Math.round(scale / 1000) + "K";
-          } else if (scale >= 950000) {
-            scale = Math.round(scale / 1000000) + "M";
-          } else {
-            scale = Math.round(scale);
-          }
-          document.getElementById('scale').innerHTML = "Scale = 1 : " + scale;
+        var resolution = evt.target.get('resolution');
+        var units = map.getView().get('projection').getUnits();
+        var dpi = 25.4 / 0.28;
+        var mpu = ol.proj.METERS_PER_UNIT[units];
+        var scale = resolution * mpu * 39.37 * dpi;
+        if (scale >= 9500 && scale <= 950000) {
+          scale = Math.round(scale / 1000) + "K";
+        } else if (scale >= 950000) {
+          scale = Math.round(scale / 1000000) + "M";
+        } else {
+          scale = Math.round(scale);
         }
+        document.getElementById('scale').innerHTML = "Scale = 1 : " + scale;
       });
       map.getView().fitExtent(bounds, map.getSize());
       map.on('singleclick', function(evt) {
         document.getElementById('nodelist').innerHTML = "Loading... please wait...";
         var view = map.getView();
         var viewResolution = view.getResolution();
-        var url = untiled.getSource().getGetFeatureInfoUrl(
+        var source = untiled.get('visible') ? untiled.getSource() : tiled.getSource();
+        var url = source.getGetFeatureInfoUrl(
           evt.coordinate, viewResolution, view.getProjection(),
           {'INFO_FORMAT': 'text/html', 'FEATURE_COUNT': 50});
         if (url) {

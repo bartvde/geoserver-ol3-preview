@@ -1,6 +1,7 @@
 goog.require('ol.proj.Projection');
 goog.require('ol.View2D');
 goog.require('ol.Map');
+goog.require('ol.proj.METERS_PER_UNIT');
 goog.require('ol.control.MousePosition');
 goog.require('ol.layer.Image');
 goog.require('ol.source.ImageWMS');
@@ -59,14 +60,19 @@ goog.exportProperty(
     ol.Map.prototype.updateSize);
 
 goog.exportSymbol(
-    'ol.METERS_PER_UNIT',
-    ol.METERS_PER_UNIT
+    'ol.proj.METERS_PER_UNIT',
+    ol.proj.METERS_PER_UNIT
 );
 
 goog.exportProperty(
     ol.source.ImageWMS.prototype,
     'getGetFeatureInfoUrl',
     ol.source.ImageWMS.prototype.getGetFeatureInfoUrl);
+
+goog.exportProperty(
+    ol.source.TileWMS.prototype,
+    'getGetFeatureInfoUrl',
+    ol.source.TileWMS.prototype.getGetFeatureInfoUrl);
 
 goog.exportProperty(
     ol.layer.Layer.prototype,
