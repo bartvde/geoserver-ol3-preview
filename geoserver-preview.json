@@ -21,5 +21,8 @@
   "inherits": "../../buildcfg/base.json",
   "inputs": [
     "../examples/geoserver-preview.js"
+  ],
+  "paths": [
+    "../src"
   ]
 }
