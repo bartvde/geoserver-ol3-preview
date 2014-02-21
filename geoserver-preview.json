@@ -1,1 +1,24 @@
-{"define": {"ol.ENABLE_VECTOR": false, "ol.ENABLE_PROJ4JS" : false, "ol.ENABLE_DOM": false, "ol.ENABLE_WEBGL": false}, "inherits": "../../buildcfg/base.json", "inputs": ["../examples/geoserver-preview.js"], "id": "geoserver-preview", "externs": ["//json.js", "../build/src/external/externs/types.js", "../externs/bingmaps.js", "../externs/geojson.js", "../externs/topojson.js", "../externs/oli.js", "../externs/proj4js.js", "../externs/tilejson.js", "../externs/closure-compiler.js"]}
+{
+  "define": {
+    "ol.ENABLE_DOM": false,
+    "ol.ENABLE_PROJ4JS": false,
+    "ol.ENABLE_VECTOR": false,
+    "ol.ENABLE_WEBGL": false
+  },
+  "externs": [
+    "//json.js",
+    "../build/src/external/externs/types.js",
+    "../externs/bingmaps.js",
+    "../externs/geojson.js",
+    "../externs/topojson.js",
+    "../externs/oli.js",
+    "../externs/proj4js.js",
+    "../externs/tilejson.js",
+    "../externs/closure-compiler.js"
+  ],
+  "id": "geoserver-preview",
+  "inherits": "../../buildcfg/base.json",
+  "inputs": [
+    "../examples/geoserver-preview.js"
+  ]
+}
