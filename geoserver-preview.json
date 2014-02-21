@@ -3,7 +3,9 @@
     "ol.ENABLE_DOM": false,
     "ol.ENABLE_PROJ4JS": false,
     "ol.ENABLE_VECTOR": false,
-    "ol.ENABLE_WEBGL": false
+    "ol.ENABLE_WEBGL": false,
+    "goog.dom.ASSUME_STANDARDS_MODE": true,
+    "goog.DEBUG": false
   },
   "externs": [
     "//json.js",
