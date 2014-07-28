@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="http://ol3js.org/en/master/build/ol.css" type="text/css">
+    <link rel="stylesheet" href="http://ol3js.org/en/master/css/ol.css" type="text/css">
     <style>
         .ol-zoom {
           top: 52px;
@@ -246,14 +246,14 @@
         source: new ol.source.ImageWMS({
           ratio: 1,
           url: 'http://suite.opengeo.org/geoserver/wms',
-          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'usa:states', 'VERSION': '1.1.1'}
+          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'opengeo:countries', 'VERSION': '1.1.1'}
         })
       });
       var tiled = new ol.layer.Tile({
         visible: false,
         source: new ol.source.TileWMS({
           url: 'http://suite.opengeo.org/geoserver/wms',
-          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'usa:states', 'VERSION': '1.1.1'}
+          params: {'FORMAT': format, 'TRANSPARENT': true, 'LAYERS': 'opengeo:countries', 'VERSION': '1.1.1'}
         })
       });
       // A minimal projection object is configured with only the SRS code and the map
@@ -261,17 +261,17 @@
       // projection object.
       var projection = new ol.proj.Projection({
         code: 'EPSG:4326',
-        units: ol.proj.Units.DEGREES
+        units: 'degrees',
+        axisOrientation: 'neu'
       });
       var map = new ol.Map({
         controls: ol.control.defaults().extend([mousePositionControl]),
         target: 'map',
-        renderer: ol.RendererHint.CANVAS,
         layers: [
           untiled,
           tiled
         ],
-        view: new ol.View2D({
+        view: new ol.View({
           projection: projection
         })
       });

@@ -1,0 +1,59 @@
+{
+  "exports": [
+    "ol.Map",
+    "ol.control.MousePosition",
+    "ol.coordinate.createStringXY",
+    "ol.layer.Image",
+    "ol.layer.Image#set",
+    "ol.layer.Image#getSource",
+    "ol.source.ImageWMS",
+    "ol.source.ImageWMS#updateParams",
+    "ol.source.ImageWMS#getGetFeatureInfoUrl",
+    "ol.source.TileWMS",
+    "ol.source.TileWMS#updateParams",
+    "ol.source.TileWMS#getGetFeatureInfoUrl",
+    "ol.layer.Tile",
+    "ol.layer.Tile#set",
+    "ol.layer.Tile#getSource",
+    "ol.proj.Projection",
+    "ol.control.defaults",
+    "ol.Collection#extend",
+    "ol.View",
+    "ol.Map#getView",
+    "ol.View#on",
+    "ol.View#fitExtent",
+    "ol.Map#getSize",
+    "ol.View#get",
+    "ol.proj.Projection#getUnits",
+    "ol.proj.METERS_PER_UNIT",
+    "ol.Map#on",
+    "ol.layer.Image#get",
+    "ol.Map#updateSize",
+    "ol.Map#getLayers",
+    "ol.Collection#forEach"
+  ],
+  "compile": {
+    "externs": [
+      "externs/bingmaps.js",
+      "externs/geojson.js",
+      "externs/oli.js",
+      "externs/olx.js",
+      "externs/proj4js.js",
+      "externs/tilejson.js",
+      "externs/topojson.js",
+      "externs/vbarray.js"
+    ],
+    "define": [
+      "goog.dom.ASSUME_STANDARDS_MODE=true",
+      "goog.DEBUG=false",
+      "ol.ENABLE_VECTOR=false",
+      "ol.ENABLE_DOM=false",
+      "ol.ENABLE_WEBGL=false",
+      "ol.ENABLE_PROJ4JS=false"
+    ],
+    "compilation_level": "ADVANCED_OPTIMIZATIONS",
+    "output_wrapper": "(function(){%output%})();",
+    "use_types_for_optimization": true,
+    "manage_closure_dependencies": true
+  }
+}
